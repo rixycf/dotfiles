@@ -5,7 +5,7 @@ THIS_DIR=$(cd $(dirname $0); pwd)
 
 cd $THIS_DIR
 
-echo "ls command start"
+echo "ln command start"
 
 for f in .??*; do
 	["$f"=".git"] && continue

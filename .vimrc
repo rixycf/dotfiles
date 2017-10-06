@@ -1,12 +1,14 @@
 set vb t_vb=
 set novisualbell
 set number
+"　インデントの幅を4に設定
 set backspace=2
-set tabstop=4
+set tabstop=2
+set shiftwidth=4
 set expandtab
 set title
 set noswapfile
-set autoindent
+"set autoindent
 set background=dark
 set clipboard=unnamed
 "set t_Co=256

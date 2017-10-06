@@ -8,6 +8,7 @@ set title
 set noswapfile
 set autoindent
 set background=dark
+set clipboard=unnamed
 "set t_Co=256
 "insert mode でのキーマッピングを変更する
 imap <C-j> <esc>

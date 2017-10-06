@@ -30,6 +30,7 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('tomtom/tcomment_vim')
+"call dein#add('nightsense/willy')
 
 call dein#end()
 

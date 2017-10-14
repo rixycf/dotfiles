@@ -8,11 +8,8 @@ set shiftwidth=4
 set expandtab
 set title
 set noswapfile
-"set autoindent
 set background=dark
 set clipboard=unnamed
-"set t_Co=256
-"insert mode でのキーマッピングを変更する
 imap <C-j> <esc>
 imap { {}<LEFT>
 imap [ []<LEFT>
@@ -30,6 +27,8 @@ call dein#add('Shougo/dein.vim')
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('tomtom/tcomment_vim')
+call dein#add('lervag/vimtex')
+"call dein#add('thinca/vim-quickrun')
 "call dein#add('nightsense/willy')
 
 call dein#end()
@@ -115,3 +114,10 @@ endif
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
 " neocomplete end
+
+"vimtex------------------------------------------------
+"コンパイルするときにオプションをつける？
+let g:vimtex_latexmk_options = '-pdfdvi'
+"-clientserverのvimだとエラーがでるのでそれを消す
+let g:vimtex_compiler_latexmk = {'callback':0}
+"------------------------------------------------vimtex

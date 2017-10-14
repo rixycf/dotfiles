@@ -4,3 +4,5 @@ PS1='\u:\W\$ '
 # git でコマンドの補完を行う
 source /usr/local/etc/bash_completion.d/git-completion.bash
 
+alias ls="ls -G"
+

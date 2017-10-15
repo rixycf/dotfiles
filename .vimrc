@@ -1,16 +1,22 @@
 set vb t_vb=
 set novisualbell
-set number
+set number                      "行番号をつける
 "　インデントの幅を4に設定
 set backspace=2
-set tabstop=2
+set tabstop=4
 set shiftwidth=4
-set expandtab
-set title
-set noswapfile
+set expandtab                   "タブをスペースにする
+
+"set title                      "タイトルをつける
+set noswapfile                  "swapfileをつくらない
 set background=dark
-set clipboard=unnamed
-imap <C-j> <esc>
+set clipboard=unnamed           "クリップボードを共有
+
+"ステータスラインを表示する
+"%Fはファイル名
+set statusline=%F\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [ENC=%{&fileencoding}]
+set laststatus=2
+imap <C-j> <esc>             "キーマッピングを変更
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
@@ -29,7 +35,6 @@ call dein#add('w0ng/vim-hybrid')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('lervag/vimtex')
 "call dein#add('thinca/vim-quickrun')
-"call dein#add('nightsense/willy')
 
 call dein#end()
 

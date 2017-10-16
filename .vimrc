@@ -16,7 +16,6 @@ set clipboard=unnamed           "クリップボードを共有
 "%Fはファイル名
 set statusline=%F\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [ENC=%{&fileencoding}]
 set laststatus=2
-imap <C-j> <esc>             "キーマッピングを変更
 imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>

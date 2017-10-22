@@ -5,4 +5,6 @@ PS1='\u:\W\$ '
 source /usr/local/etc/bash_completion.d/git-completion.bash
 
 alias ls="ls -G"
+export PATH=$PATH:$(go env GOPATH)/bin
+export PATH=$PATH:$HOME/google-cloud-sdk/bin
 

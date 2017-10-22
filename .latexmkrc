@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-$latex='platex -kanji=utf8 -guess-input-enc -synctex=1 -interaction=nonstopmode %S';
+$latex='platex -kanji=utf8  %S';
 $dvipdf='dvipdfmx  %S';
 $bibtex='pbibtex -kanji=utf8 %B';
 

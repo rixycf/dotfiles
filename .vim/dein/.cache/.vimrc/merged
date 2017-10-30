@@ -1,2 +1,2 @@
 100
-['Shougo/dein.vim', 'Shougo/neocomplete.vim', 'lervag/vimtex', 'tomtom/tcomment_vim', 'w0ng/vim-hybrid']
+['Shougo/dein.vim', 'Shougo/neocomplete.vim', 'fatih/vim-go', 'lervag/vimtex', 'scrooloose/nerdtree', 'tomtom/tcomment_vim', 'w0ng/vim-hybrid']

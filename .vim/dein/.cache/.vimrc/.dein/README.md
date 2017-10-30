@@ -1,110 +1,71 @@
-# hybrid.vim
+# vim-go [![Build Status](http://img.shields.io/travis/fatih/vim-go.svg?style=flat-square)](https://travis-ci.org/fatih/vim-go)
 
-A dark colour scheme for Vim that combines the:
+<p align="center">
+  <img style="float: right;" src="assets/vim-go.png" alt="Vim-go logo"/>
+</p>
 
--   Default palette from [Tomorrow-Night](https://github.com/chriskempson/vim-tomorrow-theme).
--   Reduced contrast palette from [Codecademy](https://www.codecademy.com)'s
-    online editor.
--   Syntax group highlighting scheme from [Jellybeans](https://github.com/nanotech/jellybeans.vim)
--   Vimscript from [Solarized](https://github.com/altercation/vim-colors-solarized)
+## Features
 
-## Updates
+This plugin adds Go language support for Vim, with the following main features:
 
--   05/01/2016: Replaced `let g:hybrid_use_Xresources = 1` in favour of __`let
-    g:hybrid_custom_term_colors = 1`__
--   05/01/2016: Added `let g:hybrid_reduced_contrast = 1`
+* Compile your package with `:GoBuild`, install it with `:GoInstall` or test it
+  with `:GoTest`. Run a single tests with `:GoTestFunc`).
+* Quickly execute your current file(s) with `:GoRun`.
+* Improved syntax highlighting and folding.
+* Completion support via `gocode`.
+* `gofmt` or `goimports` on save keeps the cursor position and undo history.
+* Go to symbol/declaration with `:GoDef`.
+* Look up documentation with `:GoDoc` or `:GoDocBrowser`.
+* Easily import packages via `:GoImport`, remove them via `:GoDrop`.
+* Automatic `GOPATH` detection which works with `gb` and `godep`. Change or
+  display `GOPATH` with `:GoPath`.
+* See which code is covered by tests with `:GoCoverage`.
+* Add or remove tags on struct fields with `:GoAddTags` and `:GoRemoveTags`.
+* Call `gometalinter` with `:GoMetaLinter` to invoke all possible linters
+  (`golint`, `vet`, `errcheck`, `deadcode`, etc.) and put the result in the
+  quickfix or location list.
+* Lint your code with `:GoLint`, run your code through `:GoVet` to catch static
+  errors, or make sure errors are checked with `:GoErrCheck`.
+* Advanced source analysis tools utilizing `guru`, such as `:GoImplements`,
+  `:GoCallees`, and `:GoReferrers`.
+* Precise type-safe renaming of identifiers with `:GoRename`.
+* ... and many more! Please see [doc/vim-go.txt](doc/vim-go.txt) for more
+  information.
 
-## Requirements
+## Install
 
--   gVim 7.3+ on Linux, Mac and Windows.
--   Vim 7.3+ on Linux and Mac, using a terminal that supports 256 colours.
+The [**latest stable release**](https://github.com/fatih/vim-go/releases/latest) is the
+recommended version to use. If you choose to use the master branch instead,
+please do so with caution; it is a _development_ branch.
 
-## Installation
+vim-go follows the standard runtime path structure. Below are some helper lines
+for popular package managers:
 
-1.  Copy colors/hybrid.vim to:
+* [Vim 8 packages](http://vimhelp.appspot.com/repeat.txt.html#packages)
+  * `git clone https://github.com/fatih/vim-go.git ~/.vim/pack/plugins/start/vim-go`
+* [Pathogen](https://github.com/tpope/vim-pathogen)
+  * `git clone https://github.com/fatih/vim-go.git ~/.vim/bundle/vim-go`
+* [vim-plug](https://github.com/junegunn/vim-plug)
+  * `Plug 'fatih/vim-go'`
 
-    ```
-    ~/.vim/colors/hybrid.vim
-    ```
+You will also need to install all the necessary binaries. vim-go makes it easy
+to install all of them by providing a command, `:GoInstallBinaries`, which will
+`go get` all the required binaries.
 
-    or alternatively, use a plugin manger such as
-    [vim-plug](https://github.com/junegunn/vim-plug),
-    [NeoBundle](https://github.com/Shougo/neobundle.vim),
-    [Vundle](https://github.com/gmarik/Vundle.vim), or
-    [Pathogen](https://github.com/tpope/vim-pathogen).
+Check out the Install section in [the documentation](doc/vim-go.txt) for more
+detailed instructions (`:help go-install`).
 
-2.  Add to ~/.vimrc:
+## Usage
 
-    ```vim
-    set background=dark
-    colorscheme hybrid
-    ```
+The full documentation can be found at [doc/vim-go.txt](doc/vim-go.txt). You can
+display it from within Vim with `:help vim-go`.
 
-## Define custom terminal colours (recommended)
+Depending on your installation method, you may have to generate the plugin's
+[`help tags`](http://vimhelp.appspot.com/helphelp.txt.html#%3Ahelptags)
+manually (e.g. `:helptags ALL`).
 
-Due to the limited 256 palette, colours in Vim and gVim will still be slightly
-different.
+We also have an [official vim-go tutorial](https://github.com/fatih/vim-go-tutorial).
 
-In order to have Vim use the same colours as gVim (the way this colour scheme
-is intended) define the basic 16 colours in your terminal.
+## License
 
-#### Linux users: rxvt-unicode, xterm
-
-1.  Add the default palette to ~/.Xresources:
-
-    https://gist.github.com/3278077
-
-    ![palette](http://dl.dropbox.com/u/23813887/Xresources-palette.png)
-
-    or alternatively, add the reduced contrast palette to ~/.Xresources:
-
-    https://gist.github.com/w0ng/16e33902508b4a0350ae
-
-    ![palette](https://www.dropbox.com/s/0ny88dmfw84kcma/Xresources-palette-low.png?dl=1)
-
-2.  Add to ~/.vimrc:
-
-    ```vim
-    let g:hybrid_custom_term_colors = 1
-    let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-    colorscheme hybrid
-    ```
-
-#### OSX users: iTerm
-
-1.  Import the default colour preset into iTerm:
-
-    https://raw.githubusercontent.com/w0ng/dotfiles/master/iterm2/hybrid.itermcolors
-
-    ![iterm_palette](http://i.imgur.com/wSWCyen.png)
-
-    or alternatively, import the reduced contrast color preset into iTerm:
-
-    https://raw.githubusercontent.com/w0ng/dotfiles/master/iterm2/hybrid-reduced-contrast.itermcolors
-
-    ![iterm_palette_reduced](https://www.dropbox.com/s/mrvr3ftkmym0fok/iterm_palette_reduced.png?dl=1)
-
-
-2.  Add to ~/.vimrc:
-
-    ```vim
-    let g:hybrid_custom_term_colors = 1
-    let g:hybrid_reduced_contrast = 1 " Remove this line if using the default palette.
-    colorscheme hybrid
-    ```
-
-## Screenshots
-
-### Default palette on Linux
-
-![vim-help](http://dl.dropbox.com/u/23813887/vim-help.png)
-![vim-python](http://dl.dropbox.com/u/23813887/vim-python.png)
-![vim-markdown](http://dl.dropbox.com/u/23813887/vim-markdown.png)
-![vim-diff](http://dl.dropbox.com/u/23813887/vim-diff.png)
-![vim-spell](https://dl.dropboxusercontent.com/u/23813887/vim-spell.png)
-
-### Reduced contrast palette on OSX
-
-![vim-reduced1](https://www.dropbox.com/s/57mjs7rfzq1h128/vim-reduced1.png?dl=1)
-![vim-reduced2](https://www.dropbox.com/s/l6nvcm91llfxwjx/vim-reduced2.png?dl=1)
-![vim-reduced3](https://www.dropbox.com/s/838qoahio9klsz6/vim-reduced3.png?dl=1)
+The BSD 3-Clause License - see [`LICENSE`](LICENSE) for more details

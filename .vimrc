@@ -20,6 +20,9 @@ imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
 
+" golang
+set rtp+=$GOROOT/misc/vim
+
 "dein.vim start
 if &compatible
     set nocompatible
@@ -33,6 +36,8 @@ call dein#add('Shougo/neocomplete.vim')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('tomtom/tcomment_vim')
 call dein#add('lervag/vimtex')
+call dein#add('fatih/vim-go')
+call dein#add('scrooloose/nerdtree')
 "call dein#add('thinca/vim-quickrun')
 
 call dein#end()

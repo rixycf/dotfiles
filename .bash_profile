@@ -4,6 +4,7 @@ PS1='\u:\W\$ '
 # git でコマンドの補完を行う
 source /usr/local/etc/bash_completion.d/git-completion.bash
 export GOPATH=$(go env GOPATH)
+export GOROOT=$(go env GOROOT)
 export PATH=$PATH:$(go env GOPATH)/bin
 export PATH=$PATH:$HOME/go_appengine
 export PATH=$PATH:$HOME/google-cloud-sdk/bin

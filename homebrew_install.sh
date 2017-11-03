@@ -15,12 +15,15 @@ formulas=(
     tree
     lua
     "vim --with-lua"
+    go
     peco
     ghq
     tmux
     cask
     reattach-to-user-namespace
     openssl
+    "zsh --without-etcdir"
+    zplug
 )
 
 for formula in "$(formulas[@])"; do

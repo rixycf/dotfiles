@@ -9,7 +9,6 @@ set expandtab                   "タブをスペースにする
 
 "set title                      "タイトルをつける
 set noswapfile                  "swapfileをつくらない
-set background=dark
 set clipboard=unnamed           "クリップボードを共有
 
 "ステータスラインを表示する
@@ -38,6 +37,7 @@ call dein#add('tomtom/tcomment_vim')
 call dein#add('lervag/vimtex')
 "call dein#add('fatih/vim-go')
 call dein#add('scrooloose/nerdtree')
+"call dein#add('altercation/vim-colors-solarized')
 "call dein#add('thinca/vim-quickrun')
 
 call dein#end()
@@ -47,8 +47,9 @@ filetype plugin indent on
 if dein#check_install()
     call dein#install()
 endif
+syntax enable
+set background=dark
 colorscheme hybrid
-syntax on
 " dein.vim end
 
 " neocomplete start

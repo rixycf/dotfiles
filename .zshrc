@@ -39,7 +39,7 @@ function peco-src(){
 }
 zle -N peco-src
 
-#zplug plugin
+#zplug
 #zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     zplug "zsh-users/zsh-history-substring-search"

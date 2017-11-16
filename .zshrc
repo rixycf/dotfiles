@@ -8,7 +8,7 @@ bindkey -e
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/sbin:/usr/local/bin:$PATH
 export GOROOT=$(go env GOROOT)
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -44,8 +44,7 @@ zle -N peco-src
 if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     zplug "zsh-users/zsh-history-substring-search"
     zplug "b4b4r07/enhancd", use:init.sh
-    # zplug "zsh-users/zsh-syntax-highlighting", defer:2
-    # zplug "b4b4r07/zsh-vimode-visual", defer:3
+    #zplug "b4b4r07/zsh-vimode-visual"
    
     if ! zplug check --verbose; then
         printf "Intall [y/N]: "

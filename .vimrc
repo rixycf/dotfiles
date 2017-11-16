@@ -50,7 +50,7 @@ endif
 syntax enable
 set background=dark
 colorscheme hybrid
-" dein.vim end
+"dein.vim end
 
 " neocomplete start
 "Note: This option must be set in .vimrc(_vimrc).  NOT IN .gvimrc(_gvimrc)!

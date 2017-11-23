@@ -23,6 +23,8 @@ compinit -u
 
 # alias
 alias ls='ls -G'
+alias cp='cp -i' # 上書きされる場合は警告
+alias mv='mv -i'
 alias gofmt='gofmt -w'
 alias -g L='|less'
 alias -g G='|grep'

@@ -1,6 +1,8 @@
 set vb t_vb=
 set novisualbell
 set number                      "行番号をつける
+set hlsearch
+
 "　インデントの幅を4に設定
 set backspace=2
 set tabstop=4
@@ -19,8 +21,6 @@ imap { {}<LEFT>
 imap [ []<LEFT>
 imap ( ()<LEFT>
 
-" golang
-set rtp+=$GOROOT/misc/vim
 
 "dein.vim start
 if &compatible
@@ -37,7 +37,6 @@ call dein#add('tomtom/tcomment_vim')
 call dein#add('lervag/vimtex')
 call dein#add('fatih/vim-go')
 call dein#add('scrooloose/nerdtree')
-"call dein#add('altercation/vim-colors-solarized')
 "call dein#add('thinca/vim-quickrun')
 
 call dein#end()

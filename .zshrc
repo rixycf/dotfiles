@@ -8,7 +8,7 @@ bindkey -e
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
-export PATH=/sbin:/usr/local/bin:$PATH
+export PATH=/sbin:/usr/sbin:/usr/local/bin:/Library/TeX/texbin:$PATH
 export GOROOT=$(go env GOROOT)
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$(go env GOPATH)/bin
@@ -56,3 +56,9 @@ if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     fi
     zplug load --verbose
 fi
+
+# @mikiyaf
+# pyenv setting
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"

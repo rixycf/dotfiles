@@ -30,22 +30,35 @@ alias -g L='|less'
 alias -g G='|grep'
 alias -g P='|peco'
 
-bindkey '^]' peco-src
-function peco-src(){
-    local src=$(ghq list --full-path | peco --query "$LBUFFER")
+# bindkey '^]' peco-src
+# function peco-src(){
+#     local src=$(ghq list --full-path | peco --query "$LBUFFER")
+#     if [ -n "$src" ]; then
+#         BUFFER="cd $src"
+#         zle accept-line
+#     fi
+#     zle -R -c
+# }
+# zle -N peco-src
+bindkey '^]' fzf-src
+function fzf-src(){
+    local src=$(ghq list --full-path | fzf-tmux --query="$LBUFFER")
     if [ -n "$src" ]; then
         BUFFER="cd $src"
         zle accept-line
     fi
     zle -R -c
 }
-zle -N peco-src
+zle -N fzf-src
 
 #zplug
 #zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     zplug "zsh-users/zsh-history-substring-search"
     zplug "b4b4r07/enhancd", use:init.sh
+    zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
+    zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+
     #zplug "b4b4r07/zsh-vimode-visual"
    
     if ! zplug check --verbose; then

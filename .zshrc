@@ -1,10 +1,14 @@
 # プロンプトの設定
-PROMPT='[%n] %# '
+PROMPT='[%F{blue}%n%f] %# '
+# RPROMPT=${git status | head -n 1 | awk '{print $3}'}
+## git branch 
+#　git status | head -n 1 | awk '{print $3}'
+
 # キーバインドをemacs likeに
 bindkey -e
 
 # 環境変数の設定
-# zplugのinitディレクトリを読み込む
+# zplugのinitファイルを読み込む
 export ZPLUG_HOME=/usr/local/opt/zplug
 source $ZPLUG_HOME/init.zsh
 
@@ -58,8 +62,9 @@ if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     zplug "b4b4r07/enhancd", use:init.sh
     zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
     zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
+    # zplug "zsh-users/zsh-syntax-highlighting", defer:1
 
-    #zplug "b4b4r07/zsh-vimode-visual"
+    # zplug "b4b4r07/zsh-vimode-visual"
    
     if ! zplug check --verbose; then
         printf "Intall [y/N]: "

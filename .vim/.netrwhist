@@ -1,9 +1,7 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/riki/go'
-let g:netrw_dirhist_2='/Users/riki/Public'
-let g:netrw_dirhist_3='/Users/riki/.vim'
-let g:netrw_dirhist_4='/Users/riki/go/src/github.com/rixycf/go_training'
-let g:netrw_dirhist_5='/Users/riki/go/src/github.com/ChimeraCoder/anaconda/json/favorites'
-let g:netrw_dirhist_6='/Users/riki/go/src/github.com/rixycf/twi_image_getter'
-let g:netrw_dirhist_7='/Users/riki/.vim'
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/Users/riki/go/src/github.com/rixycf/st4t/yml_slides'
+let g:netrw_dirhist_2='/Users/riki/Documents'
+let g:netrw_dirhist_3='/Users/riki/Documents/hai-furi_camera_for_mac'
+let g:netrw_dirhist_4='/Users/riki/Documents/study_docker/hugo/quickstart/.git'
+let g:netrw_dirhist_5='/Users/riki/Documents/study_CI/concourse-weblog-test/scripts'

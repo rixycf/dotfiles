@@ -1,28 +1,45 @@
+" search gtag toml!!! 
+"  ___      ___ ___  _____ ______   ________  ________     
+" |\  \    /  /|\  \|\   _ \  _   \|\   __  \|\   ____\    
+" \ \  \  /  / | \  \ \  \\\__\ \  \ \  \|\  \ \  \___|    
+"  \ \  \/  / / \ \  \ \  \\|__| \  \ \   _  _\ \  \       
+"   \ \    / /   \ \  \ \  \    \ \  \ \  \\  \\ \  \____  
+"    \ \__/ /     \ \__\ \__\    \ \__\ \__\\ _\\ \_______\
+"     \|__|/       \|__|\|__|     \|__|\|__|\|__|\|_______|
+                                                         
+
 set vb t_vb=
 set novisualbell
-set number                      "行番号をつける
+set number
 set hlsearch
 
-"　インデントの幅を4に設定
+" indent
+set autoindent
+set smartindent
+
 set backspace=2
 set tabstop=4
 set shiftwidth=4
-set expandtab                   "タブをスペースにする
+set expandtab 
 
-"set title                      "タイトルをつける
-set noswapfile                  "swapfileをつくらない
-set clipboard=unnamed           "クリップボードを共有
+set noswapfile 
+set clipboard=unnamed
 
-"ステータスラインを表示する
-"%Fはファイル名
-set statusline=%F\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [ENC=%{&fileencoding}]
+
+" set statusline=%F\ [POS=%04l,%04v][%p%%]\ [LEN=%L]\ [ENC=%{&fileencoding}]
+set showmode
+" set showcmd
 set laststatus=2
+
 imap { {}<LEFT>
-imap [ []<LEFT>
 imap ( ()<LEFT>
+imap [ []<LEFT>
 
+nnoremap j gj
+nnoremap k gk
+nnoremap <down> gj
+nnoremap <up> gk
 
-"dein.vim start
 if &compatible
     set nocompatible
 endif
@@ -31,13 +48,15 @@ set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
 call dein#begin(expand('~/.vim/dein'))
 
 call dein#add('Shougo/dein.vim')
+call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
+call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 call dein#add('Shougo/neocomplete.vim')
 call dein#add('w0ng/vim-hybrid')
 call dein#add('tomtom/tcomment_vim')
-call dein#add('lervag/vimtex')
 call dein#add('fatih/vim-go')
-call dein#add('scrooloose/nerdtree')
-"call dein#add('thinca/vim-quickrun')
+call dein#add('itchyny/lightline.vim')
+" call dein#add('scrooloose/nerdtree')
+" call dein#add('lervag/vimtex')
 
 call dein#end()
 
@@ -67,7 +86,7 @@ let g:neocomplete#sources#dictionary#dictionaries = {
     \ 'default' : '',
     \ 'vimshell' : $HOME.'/.vimshell_hist',
     \ 'scheme' : $HOME.'/.gosh_completions'
-        \ }
+        \}
 
 " Define keyword.
 if !exists('g:neocomplete#keyword_patterns')
@@ -130,3 +149,19 @@ let g:vimtex_latexmk_options = '-pdfdvi'
 "-clientserverのvimだとエラーがでるのでそれを消す
 let g:vimtex_compiler_latexmk = {'callback':0}
 "------------------------------------------------vimtex
+
+
+
+"-----------------------------------------------------
+"-----------------|    fzf     |----------------------
+"-----------------------------------------------------
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
+  \   fzf#vim#with_preview({'options': '--exact --reverse --delimiter : --nth 3..'}, 'right:50%:wrap'))
+
+" golang setting ----------
+let mapleader = "\<Space>"
+autocmd FileType go nmap <leader>b <Plug>(go-build)
+autocmd FileType go nmap <leader>r <Plug>(go-run)
+autocmd FileType go nmap <leader>t <Plug>(go-test)

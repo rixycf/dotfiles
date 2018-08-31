@@ -1,6 +1,6 @@
 #!/bin/sh
 dein_install() {
-    local -r DEIN_INSTALL_SCRIPT="https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh"
+    local DEIN_INSTALL_SCRIPT="https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh"
 
     tmpfile=$(mktemp $HOME/XXXX)
 

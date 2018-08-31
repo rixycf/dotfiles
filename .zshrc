@@ -1,8 +1,5 @@
 # プロンプトの設定
 PROMPT='[%F{blue}%n%f] %# '
-# RPROMPT=${git status | head -n 1 | awk '{print $3}'}
-## git branch 
-#　git status | head -n 1 | awk '{print $3}'
 
 # キーバインドをemacs likeに
 bindkey -e
@@ -34,16 +31,6 @@ alias -g L='|less'
 alias -g G='|grep'
 alias -g P='|peco'
 
-# bindkey '^]' peco-src
-# function peco-src(){
-#     local src=$(ghq list --full-path | peco --query "$LBUFFER")
-#     if [ -n "$src" ]; then
-#         BUFFER="cd $src"
-#         zle accept-line
-#     fi
-#     zle -R -c
-# }
-# zle -N peco-src
 bindkey '^]' fzf-src
 function fzf-src(){
     local src=$(ghq list --full-path | fzf-tmux --query="$LBUFFER")

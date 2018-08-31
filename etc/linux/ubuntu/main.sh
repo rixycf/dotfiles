@@ -10,5 +10,3 @@ done &> /dev/null &
 
 sudo apt update
 sudo apt upgrade
-
-

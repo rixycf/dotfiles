@@ -70,5 +70,11 @@ symbolic_link() {
 }
 
 echo $DOTFILE_TARBALL_URL
+
+# download dotfiles from github.com/rixycf/dotfiles
 download_dotfiles
+
+# create symbolic link
+## ~/.XXXrc -> $DOTFILE_PATH/.XXXrc ...
+symbolic_link
 

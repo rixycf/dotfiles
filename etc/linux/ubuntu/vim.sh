@@ -2,17 +2,8 @@
 dein_install() {
     local DEIN_INSTALL_SCRIPT="https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh"
 
-    tmpfile=$(mktemp $HOME/XXXX)
-
-    curl -LsSo "$tmpfile" "$DEIN_INSTALL_SCRIPT" &> /dev/null
-
-    if [ . $tmpfile $HOME/.vim/dein ]; then
-        rm $tmpfile
-        return 0
-    fi
-
-    rm $tmpfile
-    return 1
+    curl "$DEIN_INSTALL_SCRIPT" > installer.sh
+    sh installer.sh ~/.vim/dein
 }
 
 dein_install

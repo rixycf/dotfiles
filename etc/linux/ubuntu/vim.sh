@@ -11,7 +11,7 @@ dein_install() {
 }
 
 install_vim() {
-    local -r DOWNLOAD_DIR=/opt/vim
+    local DOWNLOAD_DIR=/opt/vim
     sudo apt install -y build-essential ncurses-dev lua5.2 lua5.2-dev
     git clone https://github.com/vim/vim $DOWNLOAD_DIR
 

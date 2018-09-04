@@ -7,28 +7,25 @@ dein_install() {
     curl "$DEIN_INSTALL_SCRIPT" > installer.sh
     sh installer.sh ~/.vim/dein
 
+    echo "remove installer.sh..."
     rm installer.sh
 }
 
 install_vim() {
     local DOWNLOAD_DIR=/opt/vim
-    sudo apt install -y build-essential ncurses-dev lua5.2 lua5.2-dev
-    git clone https://github.com/vim/vim $DOWNLOAD_DIR
+    sudo apt install -y build-essential ncurses-dev lua5.2 liblua5.2-dev luajit libluajit-5.1
+    sudo git clone https://github.com/vim/vim $DOWNLOAD_DIR
 
+    ## exec /opt/vim/Makefile
     cd $DOWNLOAD_DIR
 
-    if [ -f $DOWNLOAD_DIR/configure ]; then
-        sudo $DOWNLOAD_DIR/configure \
-            --with-features=huge \
-            --enable-multibyte \
-            --enable-fontset \
-            --enable-luainterp=dynamic \
-            --enable-cscope \
-            --enable-gui-auto \
-            --enable-gtk2-check \
-            --with-x \
-            --prefix=/usr/local
-    fi 
+    sudo $DOWNLOAD_DIR/configure --with-features=huge \
+        --enable-multibyte \
+        --enable-fontset \
+        --enable-luainterp \
+        --with-luajit \
+        --enable-cscope \
+        --enable-fail-if-missing \
 
     sudo make
     sudo make install
@@ -36,4 +33,6 @@ install_vim() {
 
 dein_install
 install_vim
+## reload shell
+exec $SHELL
 

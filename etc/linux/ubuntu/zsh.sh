@@ -9,9 +9,6 @@ install_zplug(){
 echo "install zsh"
 sudo apt install zsh
 
-echo "change loing shell"
-chsh -s $(which zsh)
-
 echo "install zplug"
 install_zplug
 

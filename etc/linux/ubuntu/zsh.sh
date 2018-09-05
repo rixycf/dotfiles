@@ -12,3 +12,4 @@ sudo apt install zsh
 echo "install zplug"
 install_zplug
 
+## if tab completion error. remove ~/.zplug/zcompdump

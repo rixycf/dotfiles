@@ -1,0 +1,14 @@
+#!/bin/sh
+
+## if os is macos use reattach-to-user-namespace
+if [ "$(uname)" = 'Darwin' ]; then
+    if command -v reattach-to-user-namespace >/dev/null 2>&1 ; then
+        reattach-to-user-namespace pbcopy
+    fi
+
+# if os is ubuntu, then use xsel
+elif [ "$(expr substr $(uname -s) 1 5)" = 'Linux' ] && [ -e "/etc/lsb-release" ]; then
+    if command -v xsel >/dev/null 2>&1 ; then
+        xsel -ip && xsel -op | xsel -ib
+    fi
+fi

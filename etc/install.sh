@@ -2,10 +2,8 @@
 
 declare -r GITHUB_REPOSITORY="rixycf/dotfiles"
 declare -r DOTFILE_TARBALL_URL="https://api.github.com/repos/$GITHUB_REPOSITORY/tarball/master"
-
 declare -r DOWNLOAD_PATH="$HOME"
 declare -r dotfiles_name="dotfiles"
-
 declare -r DOTFILE_PATH="$DOWNLOAD_PATH/$dotfiles_name"
 
 
@@ -46,7 +44,7 @@ download_dotfiles() {
     fi
 
     # extract tarball file
-    tar zxvf $tmpfile -C $DOTFILE_PATH --strip-components 1
+    tar zxvf $tmpfile -C $DOTFILE_PATH --strip-components 1 > /dev/null 2>&1
 
     echo "remove tmpfile..."
     rm $tmpfile
@@ -69,9 +67,23 @@ symbolic_link() {
     echo "end !"
 }
 
-echo $DOTFILE_TARBALL_URL
+# echo $DOTFILE_TARBALL_URL
+echo '
+--------------------------------------------------------------------
+ _____     ______     ______      ______   __     __         ______    
+/\  __-.  /\  __ \   /\__  _\    /\  ___\ /\ \   /\ \       /\  ___\   
+\ \ \/\ \ \ \ \/\ \  \/_/\ \/    \ \  __\ \ \ \  \ \ \____  \ \  __\   
+ \ \____-  \ \_____\    \ \_\     \ \_\    \ \_\  \ \_____\  \ \_____\ 
+  \/____/   \/_____/     \/_/      \/_/     \/_/   \/_____/   \/_____/ 
 
-# download dotfiles from github.com/rixycf/dotfiles
+--------------------------------------------------------------------
+                                                                       
+1. this script download dotfiles from github.com/rixycf/dotfiles
+2. create symbolic link $DOTFILE_PATH/.XXX -> $HOME/.XXX
+3. if you want to install tools(ex. tmux, zsh...), please execute 
+   install_binaries.sh.
+'
+
 download_dotfiles
 
 # create symbolic link

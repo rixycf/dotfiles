@@ -46,12 +46,9 @@ zle -N fzf-src
 #zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 if [[ -f $ZPLUG_HOME/init.zsh ]]; then
     zplug "zsh-users/zsh-history-substring-search"
-    zplug "b4b4r07/enhancd", use:init.sh
+    zplug "b4b4r07/enhancd", use:init.sh, at:v2.2.1
     zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
     zplug "junegunn/fzf", as:command, use:bin/fzf-tmux
-    # zplug "zsh-users/zsh-syntax-highlighting", defer:1
-
-    # zplug "b4b4r07/zsh-vimode-visual"
    
     if ! zplug check --verbose; then
         printf "Intall [y/N]: "

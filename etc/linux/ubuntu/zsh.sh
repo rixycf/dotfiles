@@ -7,7 +7,7 @@ install_zplug(){
 }
 
 echo "install zsh"
-sudo apt install zsh
+sudo apt install -y zsh
 
 echo "install zplug"
 install_zplug

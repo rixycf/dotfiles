@@ -27,16 +27,20 @@ install_tools() {
 
     for s in "${install_list[@]}"; do
         echo "$s.sh"
+        $SCRIPT_DIR/$s.sh
     done
 }
 
 #
 sudo_keepalive
 
+#TODO: add comment
 sudo apt update
 sudo apt upgrade
 
 install_tools
+## reload shell
+exec $SHELL
 
 echo "sudo timestamp reset..."
 sudo -K

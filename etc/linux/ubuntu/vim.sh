@@ -33,6 +33,4 @@ install_vim() {
 
 dein_install
 install_vim
-## reload shell
-exec $SHELL
 

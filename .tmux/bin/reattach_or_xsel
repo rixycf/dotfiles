@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## if os is macos use reattach-to-user-namespace
 if [ "$(uname)" = 'Darwin' ]; then

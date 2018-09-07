@@ -1,0 +1,10 @@
+#!/bin/bash
+
+## if os is macos use reattach-to-user-namespace
+if [[ "$(uname)" = 'Darwin' ]]; then
+    reattach-to-user-namespace -l $SHELL
+    
+# if os is ubuntu, then use xsel
+elif [[ "$(expr substr $(uname -s) 1 5)" = 'Linux' ]] && [[ -e "/etc/lsb-release" ]]; then
+    $SHELL
+fi

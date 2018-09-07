@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 
 dein_install() {

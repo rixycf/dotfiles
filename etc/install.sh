@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 declare -r GITHUB_REPOSITORY="rixycf/dotfiles"
 declare -r DOTFILE_TARBALL_URL="https://api.github.com/repos/$GITHUB_REPOSITORY/tarball/master"

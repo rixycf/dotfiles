@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ## sudo keep alive 
 ## 60秒ごとにsudo -n trueを実行することで，パスワードの再要求の時間を伸ばす．

@@ -26,9 +26,9 @@ curl https://raw.githubusercontent.com/rixycf/dotfiles/master/etc/install.sh | b
 
 how to install tools
 ----
-__this install script do not support macOS__
+__this install script do not support macOS yet__
 
-plase execute install_binary.sh
+please execute install_binary.sh
 
 ```
 /path/to/dotfiles/etc/install_binary.sh

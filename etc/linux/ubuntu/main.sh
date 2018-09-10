@@ -16,7 +16,6 @@ sudo_keepalive() {
 ## install_tools function install binaries ... (example: git tmux ...)
 install_tools() {
     local SCRIPT_DIR=$(cd $(dirname $0); pwd)
-    echo "$SCRIPT_DIR"
 
     install_list=(
         git
@@ -30,17 +29,21 @@ install_tools() {
     done
 }
 
-#
-sudo_keepalive
+main() {
+    sudo_keepalive 
 
-#TODO: add comment
-sudo apt -y update
-sudo apt -y upgrade
+    local CURRENT_DIR=$(cd $(dirname $0); pwd)
+    . $CURRENT_DIR/utils.sh
+    (sudo apt -y update) & spin $!
+    (sudo apt -y upgrade) & spin $!
 
-install_tools
+    install_tools
 
-echo "sudo timestamp reset..."
-sudo -K
+    echo "sudo timestamp reset..."
+    sudo -K
 
-## reload shell
-exec $SHELL
+    ## reload shell
+    exec $SHELL
+}
+
+main

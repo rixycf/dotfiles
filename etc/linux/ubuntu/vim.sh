@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-dein_install() {
+install_dein() {
     local DEIN_INSTALL_SCRIPT="https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh"
 
     curl "$DEIN_INSTALL_SCRIPT" > installer.sh
@@ -31,6 +31,6 @@ install_vim() {
     sudo make install
 }
 
-dein_install
+install_dein 
 install_vim
 

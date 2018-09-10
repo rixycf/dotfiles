@@ -77,6 +77,7 @@ symbolic_link() {
         [ "$f" = "$DOTFILE_PATH/.DS_Store" ] && continue
 
         ln -snvf "$f" "$HOME"
+
     done
 
     echo "end !"

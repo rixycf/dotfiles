@@ -1,9 +1,15 @@
 #!/bin/bash
 
 install_zplug(){
-    local INSTALL_SCRIPT=https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
+    local INSTALL_SCRIPT=https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
+    local pwd=$(cd $(dirname $0); pwd)
 
-    curl -sL --proto-redir -all, "$INSTALL_SCRIPT" | zsh 
+    tmpfile="$(mktemp $pwd/XXXX)"
+    curl -Lso --proto-redir -all, "$tmpfile" "$INSTALL_SCRIPT" || return 1
+
+    cat $tmpfile | zsh
+    rm $tmpfile
+
     return $?
 
 }

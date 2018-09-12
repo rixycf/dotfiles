@@ -14,8 +14,10 @@ sudo_keepalive() {
 }
 
 init () {
-    local FILEPATH="$(cd $(dirname $0); pwd)/$(basename $0)"
-    for f in $(find $FILEPATH -type f -name "*.sh" ); do
+    local SCRIPT_DIR="$(cd $(dirname $0); pwd)"
+    local FILEPATH="$SCRIPT_DIR/$(basename $0)"
+
+    for f in $(find $SCRIPT_DIR -type f -name "*.sh" ); do
         if [ $f = $FILEPATH ]; then
             continue
         fi
@@ -59,9 +61,8 @@ main() {
     sudo_keepalive 
 
     init
-
-    (sudo apt -y update) & spin $!
-    (sudo apt -y upgrade) & spin $!
+    # (sudo apt -y update) & spin $!
+    # (sudo apt -y upgrade) & spin $!
 
     install_tools
 

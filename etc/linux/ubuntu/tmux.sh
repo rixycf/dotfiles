@@ -22,5 +22,3 @@ install_tmux() {
 
     return $?
 }
-
-install_tmux

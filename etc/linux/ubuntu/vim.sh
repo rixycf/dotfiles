@@ -42,6 +42,3 @@ install_vim() {
 
 }
 
-install_dein 
-install_vim
-

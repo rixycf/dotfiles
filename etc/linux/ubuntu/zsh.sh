@@ -13,7 +13,4 @@ install_zsh(){
     return $?
 }
 
-install_zsh
-install_zplug
-
 ## if tab completion error. remove ~/.zplug/zcompdump

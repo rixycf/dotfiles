@@ -1,13 +1,16 @@
 #!/bin/bash
 
 install_zplug(){
+    sed -i 's@/usr/local/opt/zplug@\$HOME/.zplug@' "$HOME/.zshrc"
+
     local INSTALL_SCRIPT=https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
-    local pwd=$(cd $(dirname $0); pwd)
+    local current=$(cd $(dirname $0); pwd)
 
-    tmpfile="$(mktemp $pwd/XXXX)"
-    curl -Lso --proto-redir -all, "$tmpfile" "$INSTALL_SCRIPT" || return 1
+    tmpfile="$(mktemp $current/XXXX.zsh)"
+    curl -Lso "$tmpfile" "$INSTALL_SCRIPT" || return 1
 
-    cat $tmpfile | zsh
+    zsh "$tmpfile.zsh"
+
     rm $tmpfile
 
     return $?

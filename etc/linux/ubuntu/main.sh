@@ -1,6 +1,8 @@
 #!/bin/bash
 
 sudo_keepalive() {
+    sudo -K
+    sudo -v
 
     while true; do
         sudo -n true;

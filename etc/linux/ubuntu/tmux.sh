@@ -1,7 +1,5 @@
 #!/bin/bash
 
-. ./utils.sh
-
 install_tmux() {
     local DOWNLOAD_DIR=/opt/tmux
     sudo apt install -y build-essential \

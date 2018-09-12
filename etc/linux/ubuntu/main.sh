@@ -52,10 +52,11 @@ install_tools() {
 }
 
 installer() {
+
     local tool=$1
     local logfile_path="$(cd $(dirname $0); pwd)/log"
 
-    install_"$tool" > "$logfile_path/$tool" 2>&1
+    install_"$tool" > "$logfile_path/$tool.log" 2>&1
 
 }
 

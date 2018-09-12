@@ -1,20 +1,25 @@
 #!/bin/bash
 
+error() {
+    echo "$@" 1>&2
+}
+
 spin() {
     tput civis
 
     local pid=$1
     local before_message=$2
-    local after_message=$3
+    # local after_message=$3
+
     local spinner='|/-\'
     local delay=0.08
     local temp=""
-    local prosess="$(ps a | grep $pid | grep -v "grep" | awk '{for(i=5; i<= NF;i++) printf "%s ", $i;}')"
+
+    # local prosess="$(ps a | grep $pid | grep -v "grep" | awk '{for(i=5; i<= NF;i++) printf "%s ", $i;}')"
 
     while [ "$(ps a | awk '{print $1}' | grep -w $pid)" ]; do
 
         temp=${spinner#?}
-        printf "$prosess" 
         printf " [%c] " "$spinner" 
         printf "$before_message \r"
 
@@ -25,7 +30,7 @@ spin() {
     done
 
     delete_oneline
-    printf " [o] done! \n"
+    printf " [o] complete! \n"
 
     tput cnorm
 }

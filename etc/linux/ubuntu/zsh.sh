@@ -1,15 +1,19 @@
 #!/bin/bash
 
 install_zplug(){
+    local INSTALL_SCRIPT=https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh
 
-    curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+    curl -sL --proto-redir -all, "$INSTALL_SCRIPT" | zsh 
+    return $?
 
 }
 
-echo "install zsh"
-sudo apt install -y zsh
+install_zsh(){
+    sudo apt install -y zsh
+    return $?
+}
 
-echo "install zplug"
+install_zsh
 install_zplug
 
 ## if tab completion error. remove ~/.zplug/zcompdump

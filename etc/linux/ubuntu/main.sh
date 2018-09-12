@@ -13,37 +13,69 @@ sudo_keepalive() {
 
 }
 
+init () {
+    local FILEPATH="$(cd $(dirname $0); pwd)/$(basename $0)"
+    for f in $(find $FILEPATH -type f -name "*.sh" ); do
+        if [ $f = $FILEPATH ]; then
+            continue
+        fi
+
+        ## read script 
+        . $f
+
+    done
+}
+
 ## install_tools function install binaries ... (example: git tmux ...)
 install_tools() {
     local SCRIPT_DIR=$(cd $(dirname $0); pwd)
+    local bp=""
 
     install_list=(
         git
+        dein
         vim
         zsh
+        zplug
         tmux
     )
 
     for s in "${install_list[@]}"; do
-        $SCRIPT_DIR/$s.sh
+        (install_"$s") & spin $! "install $s"
+        bp=$!
+        wait $!
+
+        if [ $? -ne 0 ]; then
+            return 1
+        fi
+
     done
+
+    return $?
 }
+
 
 main() {
     sudo_keepalive 
 
-    local CURRENT_DIR=$(cd $(dirname $0); pwd)
-    . $CURRENT_DIR/utils.sh
+    init
+
     (sudo apt -y update) & spin $!
     (sudo apt -y upgrade) & spin $!
 
     install_tools
 
-    echo "sudo timestamp reset..."
-    sudo -K
+    if [ $? -ne 0 ]; then
+        echo "\e[31 install error... \e[m"
+        echo "sudo timestamp reset"
+        sudo -K
+        exit 1
+    fi
 
+    echo "sudo timestamp reset"
+    sudo -K
     ## reload shell
-    exec $SHELL
+    # exec $SHELL
 }
 
 main

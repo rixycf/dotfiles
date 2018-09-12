@@ -1,8 +1,5 @@
 #!/bin/bash
 
-## sudo keep alive 
-## 60秒ごとにsudo -n trueを実行することで，パスワードの再要求の時間を伸ばす．
-## この処理は親プロセス(main.sh)が最後まで実行されるまで，バックグラウンドでループする
 sudo_keepalive() {
 
     while true; do
@@ -23,7 +20,7 @@ init () {
         fi
 
         ## read script 
-        . $f
+        source $f
 
     done
 }
@@ -31,7 +28,6 @@ init () {
 ## install_tools function install binaries ... (example: git tmux ...)
 install_tools() {
     local SCRIPT_DIR=$(cd $(dirname $0); pwd)
-    local bp=""
 
     install_list=(
         git
@@ -42,10 +38,9 @@ install_tools() {
         tmux
     )
 
+    ## install tools
     for s in "${install_list[@]}"; do
-        (install_"$s") & spin $! "install $s"
-        bp=$!
-        wait $!
+        ( install_"$s" > "$SCRIPT_DIR/$s.log" 2>&1 ) & spin $! "install $s"
 
         if [ $? -ne 0 ]; then
             return 1
@@ -58,16 +53,18 @@ install_tools() {
 
 
 main() {
-    sudo_keepalive 
 
     init
+    sudo_keepalive 
+
     # (sudo apt -y update) & spin $!
     # (sudo apt -y upgrade) & spin $!
 
     install_tools
 
     if [ $? -ne 0 ]; then
-        echo "\e[31 install error... \e[m"
+        echo "install error..."
+
         echo "sudo timestamp reset"
         sudo -K
         exit 1
@@ -75,8 +72,7 @@ main() {
 
     echo "sudo timestamp reset"
     sudo -K
-    ## reload shell
-    # exec $SHELL
+
 }
 
 main

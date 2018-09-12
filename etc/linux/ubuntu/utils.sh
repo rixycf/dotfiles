@@ -8,8 +8,7 @@ spin() {
     tput civis
 
     local pid=$1
-    local before_message=$2
-    # local after_message=$3
+    local msg=$2
 
     local spinner='|/-\'
     local delay=0.08
@@ -21,7 +20,7 @@ spin() {
 
         temp=${spinner#?}
         printf " [%c] " "$spinner" 
-        printf "$before_message \r"
+        printf "$msg \r"
 
         sleep $delay
 
@@ -29,10 +28,18 @@ spin() {
 
     done
 
-    delete_oneline
-    printf " [o] complete! \n"
+    wait $pid
+    if [ $? -ne 0 ]; then
+        delete_oneline
+        printf " [x] $msg fail... \n"
+        tput cnorm
+        return 1
+    fi
 
+    delete_oneline
+    printf " [o] $msg complete! \n"
     tput cnorm
+
 }
 
 delete_oneline() {
@@ -42,5 +49,4 @@ delete_oneline() {
     done
 
     printf "\r"
-
 }

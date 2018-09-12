@@ -10,7 +10,7 @@ sudo_keepalive() {
 
 }
 
-init () {
+init() {
     local SCRIPT_DIR="$(cd $(dirname $0); pwd)"
     local FILEPATH="$SCRIPT_DIR/$(basename $0)"
 
@@ -40,7 +40,7 @@ install_tools() {
 
     ## install tools
     for s in "${install_list[@]}"; do
-        ( install_"$s" > "$SCRIPT_DIR/$s.log" 2>&1 ) & spin $! "install $s"
+        ( installer "$s" ) & spin $! "install $s"
 
         if [ $? -ne 0 ]; then
             return 1
@@ -51,12 +51,19 @@ install_tools() {
     return $?
 }
 
+installer() {
+    local tool=$1
+    local logfile_path="$(cd $(dirname $0); pwd)/log"
+
+    install_"$tool" > "$logfile_path/$tool" 2>&1
+
+}
+
 
 main() {
 
     init
     sudo_keepalive 
-
     # (sudo apt -y update) & spin $!
     # (sudo apt -y upgrade) & spin $!
 
@@ -72,6 +79,7 @@ main() {
 
     echo "sudo timestamp reset"
     sudo -K
+    echo "complete!"
 
 }
 

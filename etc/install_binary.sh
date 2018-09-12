@@ -31,6 +31,7 @@ elif [ "$(expr substr $(uname -s) 1 5)" = 'Linux' ] && [ -e "/etc/lsb-release" ]
 
     SCRIPT_DIR="$SCRIPT_DIR/linux/ubuntu"
     $SCRIPT_DIR/main.sh
+
 fi
 
 

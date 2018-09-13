@@ -9,7 +9,7 @@ install_zplug(){
     tmpfile="$(mktemp $current/XXXX.zsh)"
     curl -Lso "$tmpfile" "$INSTALL_SCRIPT" || return 1
 
-    zsh "$tmpfile.zsh"
+    zsh "$tmpfile" || return 1
 
     rm $tmpfile
 

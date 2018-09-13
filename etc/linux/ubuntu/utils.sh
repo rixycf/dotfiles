@@ -10,7 +10,8 @@ spin() {
     local pid=$1
     local msg=$2
 
-    local spinner='|/-\'
+    # local spinner='|/-\'
+    local spinner='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
     local delay=0.08
     local temp=""
 

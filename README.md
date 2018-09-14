@@ -24,6 +24,11 @@ curl https://raw.githubusercontent.com/rixycf/dotfiles/master/etc/install.sh | b
 1. this script download dotfiles from github.com/rixycf/dotfiles
 1. create symbolic link $DOTFILE_PATH/.XXX -> $HOME/.XXX
 
+DEMO
+----
+![install](https://user-images.githubusercontent.com/31855673/45528631-1c686980-b81c-11e8-962e-d441ab76eb70.gif)  
+
+
 how to install tools
 ----
 __this install script do not support macOS yet__

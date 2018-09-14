@@ -31,8 +31,8 @@ download() {
     if command -v "curl" > /dev/null 2>&1; then
         curl -LsSo "$FILE" "$URL" > /dev/null 2>&1
         return $?
-    elif
-        command -v "wget" > /dev/null 2>&1 ; then
+
+    elif command -v "wget" > /dev/null 2>&1 ; then
         wget -qO "$FILE" "$URL" > /dev/null 2>&1
         return $?
     fi

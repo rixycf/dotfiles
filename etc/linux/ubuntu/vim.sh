@@ -1,13 +1,18 @@
 #!/bin/bash
 
 install_dein() {
-    local DEIN_INSTALL_SCRIPT="https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh"
+    local SCRIPT_URL=https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh
+    local current="$(cd $(dirname $0); pwd)"
+    local tmpfile="$(mktemp $current/XXXX.sh)"
 
-    curl "$DEIN_INSTALL_SCRIPT" > installer.sh ||  return 1
-    sh installer.sh ~/.vim/dein ||  return 1
+#    curl "$SCRIPT_URL" > installer.sh ||  return 1
+#    sh installer.sh ~/.vim/dein ||  return 1
+    curl -Lso "$tmpfile" "$SCRIPT_URL" > /dev/null 2>&1 || return 1
+
+    sh "$tmpfile" "$HOME/.vim/dein" || return 1
 
     echo "remove installer.sh..."
-    rm installer.sh
+    rm $tmpfile
 
     return $?
 }

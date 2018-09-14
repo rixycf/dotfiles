@@ -51,3 +51,21 @@ delete_oneline() {
 
     printf "\r"
 }
+
+download() {
+
+    local file="$1"
+    local url="$2"
+
+    if command -v "curl" >/dev/null 2>&1 ;then
+        curl -Lso "$file" "$url" > /dev/null 2>&1 
+        return $?
+
+    elif command -v "wget" > /dev/null 2>&1; then
+        wget -qO "$file" "$url" > /dev/null 2>&1
+        return $?
+    fi
+
+    return 1
+
+}

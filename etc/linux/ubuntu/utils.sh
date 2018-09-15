@@ -11,21 +11,19 @@ spin() {
     local msg=$2
 
     # local spinner='|/-\'
-    local spinner='⠋⠙⠹⠸⠼⠴⠦⠧⠇⠏'
+    local spinner=(⠋ ⠙ ⠹ ⠸ ⠼ ⠴ ⠦ ⠧ ⠇ ⠏)
     local delay=0.08
-    local temp=""
+    local i=0
 
-    # local prosess="$(ps a | grep $pid | grep -v "grep" | awk '{for(i=5; i<= NF;i++) printf "%s ", $i;}')"
+    while kill -0 $pid > /dev/null 2>&1; do
 
-    while [ "$(ps a | awk '{print $1}' | grep -w $pid)" ]; do
-
-        temp=${spinner#?}
-        printf " [%c] " "$spinner" 
-        printf "$msg \r"
-
+        printf " [${spinner[i]}] $msg \r"
+        let i++
         sleep $delay
 
-        spinner=$temp${spinner%"$temp"}
+        if [ $i -gt ${#spinner[@]} ]; then
+            i=0
+        fi
 
     done
 

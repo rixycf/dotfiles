@@ -43,18 +43,30 @@ nnoremap <up> gk
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'w0ng/vim-hybrid'
-" Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'cocopon/iceberg.vim'
+" Plug 'w0ng/vim-hybrid'
+" Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Plug 'junegunn/fzf.vim'
 call plug#end()
 
-" syntax highlighting
+""-----------------------------------------------------
+""----------------| highlight setting |-----------------
+""------------------------------------------------------
+syntax on
 set background=dark
-colorscheme hybrid
+
+" true color 
+set termguicolors
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 " highlight line number
 set cursorline
 hi clear CursolLine
+
+colorscheme iceberg
+let g:lightline = { 'colorscheme': 'iceberg' }
+
 
 "if &compatible
 "    set nocompatible

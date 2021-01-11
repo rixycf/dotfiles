@@ -44,6 +44,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'w0ng/vim-hybrid'
+" Plug 'junegunn/fzf', { 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
 call plug#end()
 
 " syntax highlighting

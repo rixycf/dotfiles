@@ -43,9 +43,7 @@ nnoremap <up> gk
 call plug#begin('~/.vim/plugged')
 Plug 'itchyny/lightline.vim'
 Plug 'tomtom/tcomment_vim'
-Plug 'cocopon/iceberg.vim'
-" Plug 'w0ng/vim-hybrid'
-" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'arcticicestudio/nord-vim'
 " Plug 'junegunn/fzf.vim'
 call plug#end()
 
@@ -64,44 +62,11 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 set cursorline
 hi clear CursolLine
 
-colorscheme iceberg
-let g:lightline = { 'colorscheme': 'iceberg' }
+" colorscheme iceberg
+colorscheme nord
+let g:lightline = { 'colorscheme': 'nord' }
 
 
-"if &compatible
-"    set nocompatible
-"endif
-"set runtimepath+=~/.vim/dein/repos/github.com/Shougo/dein.vim
-"
-"call dein#begin(expand('~/.vim/dein'))
-"
-"call dein#add('Shougo/dein.vim')
-"call dein#add('Shougo/neocomplete.vim')
-"call dein#add('junegunn/fzf', { 'build': './install', 'merged': 0 })
-"call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-"call dein#add('w0ng/vim-hybrid')
-"call dein#add('tomtom/tcomment_vim')
-"call dein#add('fatih/vim-go')
-"call dein#add('itchyny/lightline.vim')
-"
-"call dein#end()
-"
-"filetype plugin indent on
-"
-"if dein#check_install()
-"    call dein#install()
-"endif
-"
-""dein.vim end
-"
-"
-""vimtex------------------------------------------------
-""コンパイルするときにオプションをつける？
-"let g:vimtex_latexmk_options = '-pdfdvi'
-""-clientserverのvimだとエラーがでるのでそれを消す
-"let g:vimtex_compiler_latexmk = {'callback':0}
-""------------------------------------------------vimtex
-"
 "
 ""-----------------------------------------------------
 ""-----------------|    fzf     |----------------------
@@ -110,29 +75,4 @@ let g:lightline = { 'colorscheme': 'iceberg' }
 "  \ call fzf#vim#grep(
 "  \   'rg --line-number --no-heading '.shellescape(<q-args>), 0,
 "  \   fzf#vim#with_preview({'options': '--exact --reverse --delimiter : --nth 3..'}, 'right:50%:wrap'))
-"
-"
-""-----------------------------------------------------
-""-----------------|   vim-go   |----------------------
-""-----------------------------------------------------
-"let mapleader = "\<Space>"
-"autocmd FileType go nmap <leader>b <Plug>(go-build)
-"autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
-"autocmd FileType go nmap <leader>r <Plug>(go-run)
-"autocmd FileType go nmap <leader>t <Plug>(go-test)
-"autocmd FileType go nmap <leader>c <Plug>(go-coverage-toggle)
-"
-"map <C-n> :cnext<CR>
-"map <C-m> :cprevious<CR>
-"nnoremap <leader>a :cclose<CR>
-"
-"function! s:build_go_files()
-"    let l:file = expand('%')
-"    if l:file =~# '^\f\+_test\.go$'
-"        call go#test#Test(0, 1)
-"    elseif l:file =~# '^\f\+\.go$'
-"        call go#cmd#Build(0)
-"    endif
-"endfunction
-"
 "

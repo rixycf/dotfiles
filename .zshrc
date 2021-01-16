@@ -18,7 +18,7 @@ alias cp='cp -i' # 上書きされる場合は警告
 alias mv='mv -i'
 
 #
-# export PATH=/sbin:/usr/sbin:/usr/local/bin:/Library/TeX/texbin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 # export GOROOT=$(go env GOROOT)
 # export GOPATH=$(go env GOPATH)
 # export PATH=$PATH:$(go env GOPATH)/bin
